@@ -11,7 +11,12 @@ public class Sorter {
 	}
 	
 	public static <T extends Comparable<T>> void bubbleSort(ISimpleList<T> list) {
-
+		final int n = list.getSize() -2;
+		for (int i=0; i< n) {
+			if (list.get(i) >list.get(i+1)) {
+				list.swap
+			}
+		}
 	}
 
 }
