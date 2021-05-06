@@ -3,7 +3,7 @@ package de.unistuttgart.vis.dsass2021.ex02.p3;
 public class Sorter {
 		
 	public static <T extends Comparable<T>> void selectionSort(ISimpleList<T> list) {
-		// sortier mit Selektion!
+		
 
 	}
 	
