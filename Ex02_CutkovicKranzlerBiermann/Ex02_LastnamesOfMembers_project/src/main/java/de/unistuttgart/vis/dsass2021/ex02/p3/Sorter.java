@@ -1,44 +1,78 @@
 package de.unistuttgart.vis.dsass2021.ex02.p3;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Sorter {
 		
 	public static <T extends Comparable<T>> void selectionSort(ISimpleList<T> list) {
-		int p = list.size()-1;
-		while (p>0) {
-			//suche das größte Element aus dem Bereich von 0 bis p
-			T m = list.get(0);
-			int indexOfLargestElement = 0;
-			for (int i=1; i<=p; i++) {
-				if (firstIsGreaterThanSecond(list.get(i), m)) {
-					m = list.get(i);
+
+
+		int indexOfLargestElement = 0;
+		int n = 0;
+		while(indexOfLargestElement<=list.size()-1) {
+
+			for (int i = indexOfLargestElement + 1; i <= list.size()-1; i++) {
+				if(list.get(i).compareTo(list.get(n))>0) {
+					n = i;
 				}
 			}
-			//Das größte Element ganz nach rechts legen
-			list.swap(indexOfLargestElement, p);
-			//den Bereich 0-p verkleinern
-			p--;
+			list.swap(indexOfLargestElement, n);
+
+			indexOfLargestElement++;
+			n = indexOfLargestElement;
+
 		}
+
+
 	}
-	
+
 	public static <T extends Comparable<T>> void insertionSort(ISimpleList<T> list) {
+
+		/*
+
 		int n = list.size()-1;
 		for (int i =0; i<n; i++) {
 
-			T m = list.get(i);			//wir wählen ein Element m
-			int indexOfM=i;
+			T m = list.get(i);
+
 			boolean leftOfMGreater = true;
-			while (indexOfM>0 && leftOfMGreater) {		//solange wir nicht ganz kinks sind und das Element links von m größer m ist
-				if (firstIsGreaterThanSecond(list.get(indexOfM-1),m)) {		//überprüfen ob das element links von m gößer m ist
-					list.swap(indexOfM-1, indexOfM);						//wenn ja vertauschen
-				indexOfM--;													//indexOfM korrigieren
+			while (i>0 && leftOfMGreater) {
+				if (firstIsGreaterThanSecond(list.get(i-1),m)) {
+					list.swap(i-1, i);
+				i--;
 				} else {
-					leftOfMGreater = false;									//wenn nicht sorgen wir dafür, dass die Schleife endet
+					leftOfMGreater = false;
 				}
 			}
 		}
+		*/
+
+
+		for (int i = 1; i < list.size(); i++) {
+
+
+			int j = i;
+
+			while (j > 0) {
+				if (list.get(j - 1).compareTo(list.get(j))<0) {
+					list.swap(j-1, j);
+					j-=1;
+
+				}
+				else {
+					j-=1;
+
+				}
+
+
+
+
+			}
+
+
+
+		}
+
+
 	}
 	
 	public static <T extends Comparable<T>> void bubbleSort(ISimpleList<T> list) {
